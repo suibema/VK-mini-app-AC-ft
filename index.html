@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="ru">
+<head>
+  <meta charset="utf-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <title>Выбор даты интервью</title>
+
+  <script src="https://unpkg.com/@vkontakte/vk-bridge/dist/browser.min.js"></script>
+
+  <link rel="stylesheet" href="style.css" />
+
+  <script type="module" src="script.js"></script>
+</head>
+<body>
+  <div class="card">
+    <img src="FT20LOGO@4x.png" width="96" alt="logo" />
+    <h2>Выбери удобную дату и время (мск) Центра оценки</h2>
+
+    <!-- Текущая запись -->
+    <div id="currentBox" class="current" style="display:none;">
+      <div class="row">
+        <div class="muted">Твоя текущая запись:</div>
+        <div id="currentText" style="margin-top:4px;font-weight:600;"></div>
+      </div>
+      <div class="row">
+        <button id="rebookBtn" type="button">Изменить дату</button>
+      </div>
+    </div>
+
+    <!-- Выбор даты -->
+    <div id="selectBox" style="display:none;">
+      <div class="row">
+        <label for="slotSelect">Дата и время</label>
+        <select id="slotSelect" required>
+          <option value="">Загрузка доступных слотов…</option>
+        </select>
+      </div>
+      <div class="row">
+        <button id="submitBtn" type="button">Записаться</button>
+      </div>
+    </div>
+
+    <p id="msg" class="muted"></p>
+  </div>
+</body>
+</html>
