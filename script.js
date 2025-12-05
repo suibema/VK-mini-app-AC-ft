@@ -56,8 +56,7 @@ async function initialize() {
 
     const u = await vkBridge.send('VKWebAppGetUserInfo');
     window.vkUserId = `${u.id}_VK`;
-
-    configureFirstByStartParam();
+    
   } catch (err) {
     console.error('VK init error:', err);
     const errorEl = document.getElementById('reg-error');
@@ -347,5 +346,6 @@ async function initUI() {
 submitBtn.addEventListener("click", bookSelected);
 
 initUI();
+
 
 
