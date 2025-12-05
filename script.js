@@ -56,7 +56,7 @@ async function initialize() {
 
     const u = await vkBridge.send('VKWebAppGetUserInfo');
     window.vkUserId = `${u.id}_VK`;
-    
+
   } catch (err) {
     console.error('VK init error:', err);
     const errorEl = document.getElementById('reg-error');
@@ -66,7 +66,10 @@ async function initialize() {
   }
 }
 
-initialize()
+async function bootstrap() {
+  await initialize();
+  await initUI();
+}
 
 function fmt(tsLike) {
   const d = new Date(tsLike);
@@ -172,7 +175,7 @@ async function insertLog(dateText) {
 
 async function setRegistration(dateId, dateText) {
   try {
-    const existing = await nocodbRequest("GET", `/${TBL_REG}/records?where=(${COL_REG_TGID},eq,${tgId})&limit=1`);
+    const existing = await nocodbRequest("GET", `/${TBL_REG}/records?where=(${COL_REG_TGID},eq,${window.vkUserId})&limit=1`);
     
     if (existing.list && existing.list.length > 0) {
       await nocodbRequest("PATCH", `/${TBL_REG}/records`, {
@@ -345,7 +348,8 @@ async function initUI() {
 
 submitBtn.addEventListener("click", bookSelected);
 
-initUI();
+bootstrap();
+
 
 
 
