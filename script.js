@@ -324,7 +324,7 @@ rebookBtn.addEventListener("click", async () => {
 });
 
 async function initUI() {
-  if (!window.vkUserId) { setMsg("Не удалось определить Telegram ID.", "err"); return; }
+  if (!window.vkUserId) { setMsg("Не удалось определить VK? ID.", "err"); return; }
 
   const exists = await checkUserExists();
   if (!exists) {
@@ -346,6 +346,7 @@ async function initUI() {
 submitBtn.addEventListener("click", bookSelected);
 
 initUI();
+
 
 
 
